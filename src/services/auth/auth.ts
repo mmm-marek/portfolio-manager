@@ -8,11 +8,16 @@ export const authConfig = {
         signIn: "/login",
     },
     callbacks: {
-        authorized({ auth }) {
+        authorized({ auth, request: { nextUrl } }) {
             const isLoggedIn = !!auth?.user;
-            // if user is not logged in, it will automatically redirect to the page specified in the pages.signIn property
-            // (in our case /login)
-            return isLoggedIn;
+            const isOnDashboard = nextUrl.pathname.startsWith("/dashboard");
+            if (isOnDashboard) {
+                if (isLoggedIn) return true;
+                return false; // Redirect unauthenticated users to login page
+            } else if (isLoggedIn) {
+                return Response.redirect(new URL("/dashboard", nextUrl));
+            }
+            return true;
         },
     },
     providers: [
@@ -46,7 +51,6 @@ export const authConfig = {
                     }
                 }
 
-                console.log("Invalid credentials");
                 return null;
             },
         }),
