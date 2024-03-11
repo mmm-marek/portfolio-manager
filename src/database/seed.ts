@@ -7,7 +7,9 @@ export async function seed() {
     const createTable = await db.schema
         .createTable("user")
         .ifNotExists()
-        .addColumn("id", "serial", (cb) => cb.primaryKey())
+        .addColumn("id", "uuid", (cb) =>
+            cb.primaryKey().defaultTo(sql`gen_random_uuid()`)
+        )
         .addColumn("name", "varchar(255)", (cb) => cb.notNull())
         .addColumn("email", "varchar(255)", (cb) => cb.notNull().unique())
         .addColumn("password", "varchar(255)", (cb) => cb.notNull())

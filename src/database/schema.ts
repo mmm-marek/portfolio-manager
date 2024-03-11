@@ -1,8 +1,9 @@
 import { createKysely } from "@vercel/postgres-kysely";
-import { CamelCasePlugin, ColumnType, Generated } from "kysely";
+import { UUID } from "crypto";
+import { CamelCasePlugin, ColumnType, Generated, Selectable } from "kysely";
 
 interface UserTable {
-    id: Generated<number>;
+    id: Generated<UUID>;
     name: string;
     email: string;
     password: string;
@@ -10,6 +11,8 @@ interface UserTable {
     modifiedAt: ColumnType<Date, string | undefined, never>;
     deletedAt: ColumnType<Date | null, string | undefined, never>;
 }
+
+export type User = Selectable<UserTable>;
 
 interface Database {
     user: UserTable;
