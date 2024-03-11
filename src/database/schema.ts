@@ -5,6 +5,7 @@ interface UserTable {
     id: Generated<number>;
     name: string;
     email: string;
+    password: string;
     createdAt: ColumnType<Date, string | undefined, never>;
     modifiedAt: ColumnType<Date, string | undefined, never>;
     deletedAt: ColumnType<Date | null, string | undefined, never>;
