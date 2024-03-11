@@ -1,7 +1,7 @@
 import NextAuth, { NextAuthConfig } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { z } from "zod";
-import { getUserByEmail } from "./database/repositories/userRepository";
+import { getUserByEmail } from "../../database/repositories/userRepository";
 
 export const authConfig = {
     pages: {

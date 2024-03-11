@@ -1,4 +1,4 @@
-import { logout } from "@/lib/actions";
+import { logout } from "@/services/auth/actions";
 import Link from "next/link";
 
 const Dashboard = () => {

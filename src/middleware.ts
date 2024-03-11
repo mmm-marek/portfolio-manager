@@ -1,5 +1,5 @@
 import NextAuth from "next-auth";
-import { authConfig } from "./auth";
+import { authConfig } from "./services/auth/auth";
 
 // The advantage of employing Middleware for this task is that
 // the protected routes will not even start rendering until the Middleware verifies the authentication,
