@@ -10,11 +10,11 @@ export default function LoginForm() {
 
     return (
         <form action={dispatch} className="max-w-96">
-            <div className="flex-1 flex flex-col gap-3 rounded-lg bg-gray-800 px-6 pb-4 pt-8">
+            <div className="flex flex-col flex-1 gap-3 px-6 pt-8 pb-4 bg-gray-800 rounded-lg">
                 <h1 className={"text-2xl text-white"}>
                     Please log in to continue.
                 </h1>
-                <div className="w-full flex flex-col gap-3">
+                <div className="flex flex-col w-full gap-3">
                     <label
                         className="block text-xs font-medium text-white"
                         htmlFor="email">
@@ -46,7 +46,7 @@ export default function LoginForm() {
                     Don&apos;t have an account? Register here.
                 </Link>
                 <div
-                    className="flex h-8 items-end space-x-1 text-red"
+                    className="flex items-end h-8 space-x-1 "
                     aria-live="polite"
                     aria-atomic="true">
                     {errorMessage && (
