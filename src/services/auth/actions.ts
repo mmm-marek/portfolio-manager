@@ -1,27 +1,14 @@
 "use server";
 
 import { createUser } from "@/database/repositories/userRepository";
+import { createUserSchema } from "@/schemas/userSchemas";
+import { formDataToObject } from "@/utils/formDataToObject";
 import { AuthError } from "next-auth";
-import { z } from "zod";
 import { signIn, signOut } from "./auth";
 
 export const logout = async () => {
     await signOut();
 };
-
-const formDataToObject = (formData: FormData) => {
-    const object: Record<string, string> = {};
-    formData.forEach((value, key) => {
-        object[key] = value.toString();
-    });
-    return object;
-};
-
-const createUserSchema = z.object({
-    name: z.string(),
-    email: z.string().email(),
-    password: z.string(),
-});
 
 export async function register(
     prevState: string | undefined,

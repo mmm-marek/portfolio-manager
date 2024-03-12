@@ -44,6 +44,7 @@ export const authConfig = {
                     const user = await getUserByEmail(email);
                     if (!user) return null;
 
+                    // Use hashed password in production
                     const passwordsMatch = password === user.password;
 
                     if (passwordsMatch) {
