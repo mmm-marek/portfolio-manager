@@ -6,6 +6,7 @@ import {
     Generated,
     Insertable,
     Selectable,
+    Updateable,
 } from "kysely";
 
 interface UserTable {
@@ -18,11 +19,27 @@ interface UserTable {
     deletedAt: ColumnType<Date | null, string | undefined, never>;
 }
 
+interface StockTable {
+    id: Generated<UUID>;
+    name: string;
+    tickerSymbol: string;
+    price: number;
+    createdAt: ColumnType<Date, string | undefined, never>;
+    modifiedAt: ColumnType<Date, string | undefined, never>;
+    deletedAt: ColumnType<Date | null, string | undefined, never>;
+}
+
 export type User = Selectable<UserTable>;
 export type InsertUser = Insertable<UserTable>;
+export type UpdateUser = Updateable<UserTable>;
+
+export type Stock = Selectable<StockTable>;
+export type InsertStock = Insertable<StockTable>;
+export type UpdateStock = Updateable<StockTable>;
 
 interface Database {
     user: UserTable;
+    stock: StockTable;
 }
 
 export const db = createKysely<Database>(undefined, {
