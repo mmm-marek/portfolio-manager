@@ -3,11 +3,11 @@ import { auth } from "@/services/auth/auth";
 import { Button } from "antd";
 import Link from "next/link";
 
-export default async function DashboardLayout({
+const DashboardLayout = async ({
     children,
 }: Readonly<{
     children: React.ReactNode;
-}>) {
+}>) => {
     const data = await auth();
 
     return (
@@ -26,4 +26,6 @@ export default async function DashboardLayout({
             <div>{children}</div>
         </div>
     );
-}
+};
+
+export default DashboardLayout;

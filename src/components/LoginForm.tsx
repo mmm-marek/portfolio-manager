@@ -5,7 +5,7 @@ import { Button, Input } from "antd";
 import Link from "next/link";
 import { useFormState, useFormStatus } from "react-dom";
 
-export default function LoginForm() {
+const LoginForm = () => {
     const [errorMessage, dispatch] = useFormState(authenticate, undefined);
 
     return (
@@ -56,9 +56,9 @@ export default function LoginForm() {
             </div>
         </form>
     );
-}
+};
 
-function LoginButton() {
+const LoginButton = () => {
     const { pending } = useFormStatus();
 
     return (
@@ -70,4 +70,6 @@ function LoginButton() {
             {pending ? "Logging in..." : "Log in"}
         </Button>
     );
-}
+};
+
+export default LoginForm;

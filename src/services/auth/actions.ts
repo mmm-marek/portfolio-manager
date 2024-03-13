@@ -10,10 +10,10 @@ export const logout = async () => {
     await signOut();
 };
 
-export async function register(
+export const register = async (
     prevState: string | undefined,
     formData: FormData
-) {
+) => {
     try {
         const parsedFormData = createUserSchema.safeParse(
             formDataToObject(formData)
@@ -34,12 +34,12 @@ export async function register(
         }
         throw error;
     }
-}
+};
 
-export async function authenticate(
+export const authenticate = async (
     prevState: string | undefined,
     formData: FormData
-) {
+) => {
     try {
         await signIn("credentials", formData);
     } catch (error) {
@@ -53,4 +53,4 @@ export async function authenticate(
         }
         throw error;
     }
-}
+};

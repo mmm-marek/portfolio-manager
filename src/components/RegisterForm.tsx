@@ -5,7 +5,7 @@ import { Button, Input } from "antd";
 import Link from "next/link";
 import { useFormState, useFormStatus } from "react-dom";
 
-export default function RegisterForm() {
+const RegisterForm = () => {
     const [errorMessage, dispatch] = useFormState(register, undefined);
 
     return (
@@ -66,9 +66,9 @@ export default function RegisterForm() {
             </div>
         </form>
     );
-}
+};
 
-function RegisterButton() {
+const RegisterButton = () => {
     const { pending } = useFormStatus();
 
     return (
@@ -76,4 +76,6 @@ function RegisterButton() {
             Register
         </Button>
     );
-}
+};
+
+export default RegisterForm;

@@ -1,7 +1,7 @@
 "use server";
 import { db, sql } from "./schema";
 
-export async function seed() {
+export const seed = async () => {
     const dropTable = await db.schema.dropTable("user").ifExists().execute();
 
     console.log(`Dropped "users" table`);
@@ -139,4 +139,4 @@ export async function seed() {
         .execute();
 
     console.log(`Inserted 10 stocks`);
-}
+};
