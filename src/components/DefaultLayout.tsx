@@ -2,13 +2,18 @@ import { logout } from "@/services/auth/actions";
 import { auth } from "@/services/auth/auth";
 import { Button, Menu } from "antd";
 import Link from "next/link";
+import { Suspense } from "react";
 
-const DashboardLayout = async ({
+const DefaultLayout = async ({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) => {
     const data = await auth();
+
+    if (!data?.user) {
+        return <div>{children}</div>;
+    }
 
     return (
         <div className="flex gap-6 justify-start">
@@ -16,6 +21,7 @@ const DashboardLayout = async ({
                 mode="inline"
                 theme="dark"
                 style={{ width: 256 }}
+                className="h-screen"
                 items={[
                     {
                         key: "0",
@@ -30,6 +36,14 @@ const DashboardLayout = async ({
                     {
                         key: "3",
                         label: (
+                            <Link href="/stocks/simple-data-fetching">
+                                Stocks - Simple Fetching
+                            </Link>
+                        ),
+                    },
+                    {
+                        key: "4",
+                        label: (
                             <form action={logout}>
                                 <Button className="w-full" htmlType="submit">
                                     Sign Out
@@ -39,9 +53,13 @@ const DashboardLayout = async ({
                     },
                 ]}
             />
-            <div>{children}</div>
+            <div>
+                <Suspense fallback={<div>Default layout loading...</div>}>
+                    {children}
+                </Suspense>
+            </div>
         </div>
     );
 };
 
-export default DashboardLayout;
+export default DefaultLayout;

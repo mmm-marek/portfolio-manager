@@ -1,3 +1,4 @@
+import DefaultLayout from "@/components/DefaultLayout";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -20,7 +21,9 @@ const RootLayout = ({
         <html lang="en">
             <body className={inter.className}>
                 <Providers>
-                    <AntdRegistry>{children}</AntdRegistry>
+                    <AntdRegistry>
+                        <DefaultLayout>{children}</DefaultLayout>
+                    </AntdRegistry>
                 </Providers>
             </body>
         </html>
