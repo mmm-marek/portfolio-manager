@@ -4,17 +4,10 @@ import { queryKeys } from "@/utils/queryKeyFactory";
 import { useQuery } from "@tanstack/react-query";
 import { Table } from "antd";
 
-type StockTableWithInitialDataProps = {
-    stocks: Awaited<ReturnType<typeof getStocks>>;
-};
-
-const StockTableWithInitialData = ({
-    stocks,
-}: StockTableWithInitialDataProps) => {
+const StockTableWithHydration = () => {
     const { data, isPending, isError } = useQuery({
         queryKey: [queryKeys.stocks.all],
         queryFn: getStocks,
-        initialData: stocks,
     });
 
     const columns = [
@@ -42,4 +35,4 @@ const StockTableWithInitialData = ({
     return <Table dataSource={data} columns={columns} rowKey={"id"} />;
 };
 
-export default StockTableWithInitialData;
+export default StockTableWithHydration;

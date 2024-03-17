@@ -52,6 +52,14 @@ const DefaultLayout = async ({
                     {
                         key: "5",
                         label: (
+                            <Link href="/stocks/fetching-with-hydration">
+                                Stocks - Fetching with Hydration
+                            </Link>
+                        ),
+                    },
+                    {
+                        key: "6",
+                        label: (
                             <form action={logout}>
                                 <Button className="w-full" htmlType="submit">
                                     Sign Out
