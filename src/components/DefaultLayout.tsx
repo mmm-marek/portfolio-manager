@@ -44,6 +44,14 @@ const DefaultLayout = async ({
                     {
                         key: "4",
                         label: (
+                            <Link href="/stocks/data-fetching-with-initial-data">
+                                Stocks - Data Fetching with Initial Data
+                            </Link>
+                        ),
+                    },
+                    {
+                        key: "5",
+                        label: (
                             <form action={logout}>
                                 <Button className="w-full" htmlType="submit">
                                     Sign Out

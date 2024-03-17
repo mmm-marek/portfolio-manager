@@ -1,8 +1,8 @@
-import { getStock } from "@/services/stock/actions";
+import { getStocks } from "@/services/stock/actions";
 import { Table } from "antd";
 
 const StockTable = async () => {
-    const stocks = await getStock();
+    const stocks = await getStocks();
 
     const columns = [
         {

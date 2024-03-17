@@ -2,6 +2,8 @@ import StockTable from "@/components/StockTable";
 import { Spin } from "antd";
 import { Suspense } from "react";
 
+// The simplest way to fetch data on the server.
+// However, no client-side interactivity is possible in this scenario.
 const SimpleDataFetchingPage = () => {
     return (
         <div>
