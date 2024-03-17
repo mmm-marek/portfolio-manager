@@ -7,6 +7,7 @@ import { Suspense } from "react";
 // To achieve both the server-side rendering and the client-side interactivity,
 // we can fetch the data on the server and set them as initial data for the client
 // using the initialData prop of the useQuery hook.
+// Problem with this approach is props drilling and worse developer experience.
 const DataFetchingWithInitialDataPage = async () => {
     const stocks = await getStocks();
 
