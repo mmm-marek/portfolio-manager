@@ -2,7 +2,6 @@
 
 import { createUser } from "@/database/repositories/userRepository";
 import { createUserSchema } from "@/schemas/userSchemas";
-import { formDataToObject } from "@/utils/formDataToObject";
 import { AuthError } from "next-auth";
 import { signIn, signOut } from "./auth";
 
@@ -16,7 +15,7 @@ export const register = async (
 ) => {
     try {
         const parsedFormData = createUserSchema.safeParse(
-            formDataToObject(formData)
+            Object.fromEntries(formData)
         );
         if (!parsedFormData.success) {
             return parsedFormData.error.errors[0].message;
