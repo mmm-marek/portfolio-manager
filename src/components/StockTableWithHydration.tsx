@@ -6,7 +6,7 @@ import { Table } from "antd";
 
 const StockTableWithHydration = () => {
     const { data, isPending, isError } = useQuery({
-        queryKey: [queryKeys.stocks.all],
+        queryKey: queryKeys.stocks.all,
         queryFn: getStocks,
     });
 
