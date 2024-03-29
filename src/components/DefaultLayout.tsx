@@ -1,5 +1,4 @@
 import { logout } from "@/services/auth/actions";
-import { auth } from "@/services/auth/auth";
 import { Button, Menu } from "antd";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -9,11 +8,19 @@ const DefaultLayout = async ({
 }: Readonly<{
     children: React.ReactNode;
 }>) => {
-    const data = await auth();
+    // const data = await auth();
 
-    if (!data?.user) {
-        return <div>{children}</div>;
-    }
+    // if (!data?.user) {
+    //     return <div>{children}</div>;
+    // }
+
+    const data: {
+        user: { name: string } | null;
+    } = {
+        user: {
+            name: "John Doe",
+        },
+    };
 
     return (
         <div className="flex gap-6 justify-start">

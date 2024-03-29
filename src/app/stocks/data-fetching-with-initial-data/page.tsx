@@ -1,7 +1,5 @@
 import StockTableWithInitialData from "@/components/StockTableWithInitialData";
 import { getStocks } from "@/services/stock/actions";
-import { Spin } from "antd";
-import { Suspense } from "react";
 
 // In many cases we want to allow the user to interact with our data (f.e. sorting, filtering, etc.)
 // To achieve both the server-side rendering and the client-side interactivity,
@@ -14,9 +12,7 @@ const DataFetchingWithInitialDataPage = async () => {
     return (
         <div>
             <h1>Data fetching with initial data</h1>
-            <Suspense fallback={<Spin spinning />}>
-                <StockTableWithInitialData stocks={stocks} />
-            </Suspense>
+            <StockTableWithInitialData stocks={stocks} />
         </div>
     );
 };
